@@ -86,4 +86,5 @@ def login():
 def error(e):
     return render_template("Not_found.html")
 
-app.run(debug=True)
+if __name__=="__main__":
+    app.run()
