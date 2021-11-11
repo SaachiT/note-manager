@@ -2,7 +2,7 @@ from flask import *
 from flask_pymongo import PyMongo
 from datetime import datetime
 from passlib.hash import pbkdf2_sha512
-#from bson import ObjectId
+from bson import ObjectId
 
 app=Flask(__name__)
 app.config['SECRET_KEY']="hi"
@@ -84,7 +84,7 @@ def login():
         session['user']=username
         return redirect('/home')
 
-'''@app.route('/update',methods=["POST"])
+@app.route('/update',methods=["POST"])
 def update():
     text=request.form["input"]
     id=request.form["id"]
@@ -92,7 +92,7 @@ def update():
         {'_id':ObjectId(id)},
         {'$set':{"note_text":text}}
     )
-    return redirect("/home")'''
+    return redirect("/home")
 
 @app.errorhandler(404)
 def error(e):
