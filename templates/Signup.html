@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sign Up Now</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="style.css" ; rel="stylesheet">
+</head>
+
+<body class="row justify-content-center align-items-center" style="background: rgb(206, 177, 233); font-family: monospace;">
+    {% for message in get_flashed_messages()%}
+    {{message}}
+    {% endfor %}
+    <form method="POST"><div id="div1">
+        <h1 class="display-3 text-center">Sign Up</h1>
+        <div class="row">
+            <div class="col-md"><b><label for="username1">Username</label></b></div>
+            <div class="col-md"><input name="Username" class="username form-control" id="username1"></div>
+        </div>
+        <br>
+        <i><label>Email</label></i>
+        <input name="Email" class="username form-control" placeholder="Enter text here" value="gmail.com">
+        <br>
+        <label>Pa<b>sswo</b>rd</label>
+        <input name="Password" type="password" class="form-control">
+        <br>
+        <label>DOB</label>
+        <input name="DOB" type="date" class="form-control">
+        <br>
+        <input name="Agree" type="checkbox" id="check" class="form-check-input">
+        <a href="https://google.com" ; target="_blank"><label>I agree to the terms</label></a>
+        <br>
+        <!-- <input type="color">
+        <input type="number">
+        <input type="file" multiple>
+        <br>
+        <input type="radio" name="hello">
+        <br>
+        <input type="radio" name="hello"> -->
+        <br>
+        <button class="submit btn btn-primary">Submit</button>
+    </div></form>
+</body>
+
+</html>
