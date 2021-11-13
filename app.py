@@ -2,7 +2,7 @@ from flask import *
 from flask_pymongo import PyMongo
 from datetime import datetime
 from passlib.hash import pbkdf2_sha512
-#from bson import ObjectId
+from bson import ObjectId
 
 app=Flask(__name__)
 app.config['SECRET_KEY']="hi"
@@ -44,6 +44,8 @@ def signup():
         print("in")
         return render_template("Signup.html")
     else:
+        #global user_data
+        #user_data[request.form['Username']]=request.form['Password']
         user=mongo.db.user.find_one({
             'username':request.form['Username']
             })
@@ -82,15 +84,15 @@ def login():
         session['user']=username
         return redirect('/home')
 
-#@app.route('/update',methods=["POST"])
-#def update():
-#    text=request.form["input"]
-#    id=request.form["id"]
-#    mongo.db.user_notes.update_one(
-#        {'_id':ObjectId(id)},
-#        {'$set':{"note_text":text}}
-#    )
-#    return redirect("/home")
+@app.route('/update',methods=["POST"])
+def update():
+    text=request.form["input"]
+    id=request.form["id"]
+    mongo.db.user_notes.update_one(
+        {'_id':ObjectId(id)},
+        {'$set':{"note_text":text}}
+    )
+    return redirect("/home")
 
 @app.errorhandler(404)
 def error(e):
